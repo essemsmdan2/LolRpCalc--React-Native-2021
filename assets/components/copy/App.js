@@ -19,15 +19,15 @@ function app() {
   const [lista, setLista] = useState([]);
 
   //use effect para teste, commitar no release
-  /* useEffect(() => {
+  useEffect(() => {
     setTimeout(() => {
-      setInput('120');
-    }, 1000);
-  }, []); */
+      setInput('1350');
+    }, 2000);
+  }, []);
 
   useEffect(() => {
-    if (inputValue <= 135 && inputValue) {
-      setLista([['RP: 135, R$: 4.99', 'Celular-Sms']]);
+    if (inputValue <= 145 && inputValue) {
+      setLista(['CelularSms, RP: 145, R$: 4.99']);
     } else {
       enviaInput(inputValue);
     }
@@ -42,7 +42,7 @@ function app() {
       setCardsCriados(null);
     }
     let f = criaResultadosArray(i);
-
+    console.debug(f);
     setCardsCriados(f);
   }
 
@@ -53,13 +53,13 @@ function app() {
     var n = 0;
     while (n <= f.length - 1) {
       let arraygroup = [
-        ` RP: ${f[n + 1]} - R$: ${f[n + 2]}`,
-        `Método: ${f[n] == 'Boleto' ? 'Cartão/Boleto' : f[n]} `,
+        `${f[n] == 'Boleto' ? 'Cartão/Boleto' : f[n]} - RP: ${f[n + 1]} - R$: ${
+          f[n + 2]
+        }`,
       ];
       ArrayTipoPagamento = [...ArrayTipoPagamento, arraygroup];
       n += 3;
     }
-    console.debug(ArrayTipoPagamento);
     setLista(ArrayTipoPagamento);
   }
 
@@ -119,8 +119,7 @@ function app() {
 
           {lista.map((i, index) => (
             <View style={styles.tipoPag} key={index}>
-              {<Text style={styles.textoTp}>{i[1]}</Text>}
-              <View>{<Text style={styles.textoTp}>{i[0]}</Text>}</View>
+              {<Text style={styles.textoTp}>{i}</Text>}
             </View>
           ))}
         </View>
@@ -208,12 +207,9 @@ const styles = StyleSheet.create({
   textoTp: {
     textShadowColor: '#000',
     textShadowOffset: {width: 2, height: 2},
-    fontSize: 20,
+    fontSize: 18,
     color: 'white',
     fontWeight: 'bold',
-    textAlign: 'center',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   Cresult: {
     flex: 1,
