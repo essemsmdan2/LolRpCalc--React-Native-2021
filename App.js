@@ -17,7 +17,7 @@ function app() {
   const [cardsCriadosArray, setCardsCriados] = useState([]);
   //recebe arrays com com até 3 indexs, onde são os tipos de pagamentos do flushed
   const [lista, setLista] = useState([]);
-
+  //adicionando isso aqui só pra ter certeza
   //use effect para teste, commitar no release
   /* useEffect(() => {
     setTimeout(() => {
