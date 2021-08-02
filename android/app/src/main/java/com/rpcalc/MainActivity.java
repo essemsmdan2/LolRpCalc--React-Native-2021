@@ -1,4 +1,4 @@
-package com.lolcalcrp;
+package com.rpcalc;
 
 import com.facebook.react.ReactActivity;
 
